@@ -1,4 +1,4 @@
-defmodule Balance.Window do
+defmodule Modulator.Window do
   @moduledoc """
   Tracks a set of samples, ideally over some continuous window of time. This window
   is used to derive new concurrency limits.

@@ -1,9 +1,9 @@
-defmodule Balance.MixProject do
+defmodule Modulator.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :balance,
+      app: :modulator,
       version: "0.1.0",
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,

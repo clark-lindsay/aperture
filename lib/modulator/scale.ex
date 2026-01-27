@@ -1,4 +1,4 @@
-defmodule Balance.Scale do
+defmodule Modulator.Valve do
   use GenServer
 
   @impl GenServer

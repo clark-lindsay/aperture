@@ -1,4 +1,4 @@
-defmodule Balance.LoadLimit.Static do
+defmodule Modulator.LoadLimit.Static do
   @moduledoc """
   Fixed concurrency limit. Not recommended for most use cases.
 
@@ -6,7 +6,7 @@ defmodule Balance.LoadLimit.Static do
 
   * `:concurrency_limit` (Required) - Statically defined limit
   """
-  @behaviour Balance.LoadLimit
+  @behaviour Modulator.LoadLimit
 
   @impl true
   def new(opts), do: {Map.new(opts), Access.fetch!(opts, :concurrency_limit)}

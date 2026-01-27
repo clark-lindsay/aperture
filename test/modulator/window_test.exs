@@ -1,8 +1,8 @@
-defmodule Balance.WindowTest do
+defmodule Modulator.WindowTest do
   use ExUnit.Case
   use ExUnitProperties
 
-  alias Balance.Window
+  alias Modulator.Window
 
   describe "add/2" do
     property "simple mathematical properties of non-negative integer aggregation hold up" do
