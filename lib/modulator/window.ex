@@ -53,7 +53,7 @@ defmodule Modulator.Window do
     if sample_count == 0 do
       0
     else
-      Integer.floor_div(sum, sample_count)
+      div(sum, sample_count)
     end
   end
 end

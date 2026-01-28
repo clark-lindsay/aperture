@@ -14,7 +14,8 @@ defmodule Modulator.LoadLimit.StaticTest do
               inflight_min <- constant(1),
               inflight_max <- integer(1..50)
             ) do
-        {static_load_config, ^static_concurrency_limit} = Static.new(concurrency_limit: static_concurrency_limit)
+        {static_load_config, ^static_concurrency_limit} =
+          Static.new(concurrency_limit: static_concurrency_limit)
 
         inflight_range = inflight_min..inflight_max
 
@@ -26,7 +27,8 @@ defmodule Modulator.LoadLimit.StaticTest do
             )
           end)
 
-        {static_load_config, ^static_concurrency_limit} = Static.update(static_load_config, static_concurrency_limit, window)
+        {static_load_config, ^static_concurrency_limit} =
+          Static.update(static_load_config, static_concurrency_limit, window)
 
         assert static_load_config.concurrency_limit == static_concurrency_limit
       end

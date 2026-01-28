@@ -1,13 +1,14 @@
 defmodule Modulator.LoadLimit.Static do
   @moduledoc """
-  Fixed concurrency limit. Not recommended for most use cases.
+  Fixed concurrency limit. Not recommended for most use cases, except in combination with other limits.
+  """
+  @behaviour Modulator.LoadLimit
 
+  @doc """
   ## Options
 
   * `:concurrency_limit` (Required) - Statically defined limit
   """
-  @behaviour Modulator.LoadLimit
-
   @impl true
   def new(opts), do: {Map.new(opts), Access.fetch!(opts, :concurrency_limit)}
 
