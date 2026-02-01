@@ -8,8 +8,8 @@ defmodule Aperture.MixProject do
       description:
         "A library for overload protection via adaptive concurrency, which supports multiple algorithms and custom signal definitions.",
       elixir: "~> 1.19",
-      licenses: ["MIT"],
-      links: %{"github" => "https://github.com/clark-lindsay/aperture"},
+      name: "Aperture",
+      package: package(),
       source_url: "https://github.com/clark-lindsay/aperture",
       start_permanent: Mix.env() == :prod,
       version: "0.0.1"
@@ -26,7 +26,16 @@ defmodule Aperture.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:stream_data, "~> 1.2", only: :test}
+    ]
+  end
+
+  defp package do
+    [
+      name: "aperture",
+      licenses: ["MIT"],
+      links: %{"github" => "https://github.com/clark-lindsay/aperture"}
     ]
   end
 end
