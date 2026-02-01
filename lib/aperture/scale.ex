@@ -1,4 +1,4 @@
-defmodule Modulator.Valve do
+defmodule Aperture.Iris do
   use GenServer
 
   @impl GenServer

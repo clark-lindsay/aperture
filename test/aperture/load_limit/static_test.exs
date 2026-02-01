@@ -1,9 +1,9 @@
-defmodule Modulator.LoadLimit.StaticTest do
+defmodule Aperture.LoadLimit.StaticTest do
   use ExUnit.Case
   use ExUnitProperties
 
-  alias Modulator.LoadLimit.Static
-  alias Modulator.Window
+  alias Aperture.LoadLimit.Static
+  alias Aperture.Window
 
   describe "add/2" do
     property "nothing in the config should change, despite changes in concurrency or sampled data" do

@@ -1,4 +1,4 @@
-defmodule Modulator do
+defmodule Aperture do
   @moduledoc """
   TODO
   Probably just pull from a READ_ME external source module attribute
@@ -7,8 +7,8 @@ defmodule Modulator do
 
   def new(name, {load_limit_type, load_limit_config}) do
     DynamicSupervisor.start_child(
-      Modulator.Valves,
-      {Modulator.Valve,
+      Aperture.Irises,
+      {Aperture.Iris,
        %{
          name: name,
          load_limiter: load_limit_type.new(load_limit_config)

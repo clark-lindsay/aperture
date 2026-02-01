@@ -1,4 +1,4 @@
-defmodule Modulator.LoadLimit.Gradient do
+defmodule Aperture.LoadLimit.Gradient do
   @moduledoc """
   Hysteretic Gradient limit, which uses (simple) Exponential Smoothing to incorporate past data, while maintaining a bias for more recent data.
 
@@ -31,15 +31,15 @@ defmodule Modulator.LoadLimit.Gradient do
 
   """
 
-  alias Modulator.Window
+  alias Aperture.Window
 
-  @behaviour Modulator.LoadLimit
+  @behaviour Aperture.LoadLimit
 
   @doc """
 
   ## Options
 
-  * `:initial_concurrency_limit` (Required) - Estimated limit from which to start modulating.
+  * `:initial_concurrency_limit` (Required) - Estimated limit to use a base line
   * `:recency_bias_factor` - How much weight to place on the most recent data. Must be in the range `[0, 1]`, with values closer to `1` placing more weight on more recent data. Defaults to `0.2`.
   * `:warmup_window` - Number of sample windows before we start applying exponential smoothing, using a simple average instead. This keeps the limit from getting jumpy at start-up. Defaults to 6.
   """
@@ -118,8 +118,8 @@ defmodule Modulator.LoadLimit.Gradient do
      }, new_estimated_limit}
   end
 
-  # A concurrency limit of 0 would lock up whatever is being modulated, which
-  # this module assumes is accidental or incidental to a transient jump in the
+  # A concurrency limit of 0 would lock up whatever is being limited, which
+  # this module assumes is accidental or a result of a transient jump in the
   # data.
   # And floats are not worth dealing with. If we leave a touch of throughput on
   # the table by rounding down a float, we can just call that "head room"

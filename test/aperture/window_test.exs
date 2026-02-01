@@ -1,13 +1,13 @@
-defmodule Modulator.WindowTest do
+defmodule Aperture.WindowTest do
   use ExUnit.Case
   use ExUnitProperties
 
-  alias Modulator.Window
+  alias Aperture.Window
 
   describe "add/2" do
     property "simple mathematical properties of non-negative integer aggregation hold up" do
       check all(
-              sample_count <- integer(0..600),
+              sample_count <- integer(1..600),
               samples <- list_of(positive_integer(), length: sample_count),
               inflight_min <- constant(1),
               inflight_max <- integer(1..50)

@@ -1,9 +1,9 @@
-defmodule Modulator.LoadLimit.GradientTest do
+defmodule Aperture.LoadLimit.GradientTest do
   use ExUnit.Case
   use ExUnitProperties
 
-  alias Modulator.LoadLimit.Gradient
-  alias Modulator.Window
+  alias Aperture.LoadLimit.Gradient
+  alias Aperture.Window
 
   # TODO: It feels odd that we don't account for whether or not any requests were dropped...?
   # TODO: Doesn't seem to be very sensitive at all to input, WRT changing the

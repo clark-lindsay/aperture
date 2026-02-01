@@ -1,4 +1,4 @@
-defmodule ModulatorTest do
+defmodule ApertureTest do
   use ExUnit.Case
-  doctest Modulator
+  doctest Aperture
 end

@@ -1,8 +1,8 @@
-defmodule Modulator.LoadLimit.Static do
+defmodule Aperture.LoadLimit.Static do
   @moduledoc """
   Fixed concurrency limit. Not recommended for most use cases, except in combination with other limits.
   """
-  @behaviour Modulator.LoadLimit
+  @behaviour Aperture.LoadLimit
 
   @doc """
   ## Options
