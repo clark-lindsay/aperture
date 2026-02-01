@@ -4,10 +4,15 @@ defmodule Aperture.MixProject do
   def project do
     [
       app: :aperture,
-      version: "0.1.0",
+      deps: deps(),
+      description:
+        "A library for overload protection via adaptive concurrency, which supports multiple algorithms and custom signal definitions.",
       elixir: "~> 1.19",
+      licenses: ["MIT"],
+      links: %{"github" => "https://github.com/clark-lindsay/aperture"},
+      source_url: "https://github.com/clark-lindsay/aperture",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      version: "0.0.1"
     ]
   end
 
