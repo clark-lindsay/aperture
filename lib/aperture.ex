@@ -17,10 +17,10 @@ defmodule Aperture do
   end
 
   @spec check(name :: atom()) ::
-          :ok | {:error, :valve_not_found} | {:overloaded, metadata :: map()}
+          :ok | {:error, :not_found} | {:overloaded, metadata :: map()}
   def check(_name) do
     # hit the registry and see if we recognize the resource
     # check the resource
-    {:error, :valve_not_found}
+    {:error, :not_found}
   end
 end

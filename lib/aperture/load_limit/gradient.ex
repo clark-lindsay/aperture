@@ -22,9 +22,10 @@ defmodule Aperture.LoadLimit.Gradient do
       )
   ```
 
-  The `recency_bias_factor` is usually called the "smoothing factor" in
-  literature, but such a name is actually very confusing, as values closer to
-  `1` have a ***weaker smoothing effect***.
+  What I have called the  `recency_bias_factor` is usually called the
+  "smoothing factor" in literature, but such a name is actually very confusing,
+  as values closer to `1` have a ***weaker smoothing effect*** than values
+  closer to `0`.
 
   See the [wikipedia page](https://en.wikipedia.org/wiki/Exponential_smoothing)
   for more info.
@@ -43,7 +44,8 @@ defmodule Aperture.LoadLimit.Gradient do
   * `:recency_bias_factor` - How much weight to place on the most recent data. Must be in the range `[0, 1]`, with values closer to `1` placing more weight on more recent data. Defaults to `0.2`.
   * `:warmup_window` - Number of sample windows before we start applying exponential smoothing, using a simple average instead. This keeps the limit from getting jumpy at start-up. Defaults to 6.
   """
-  # TODO: Recovery multiplier? For when the smoothed value far exceeds the most recent sample window
+  # TODO: Recovery multiplier? For when the smoothed value far exceeds the most recent sample window,
+  # indicating that the system has probably recovered from an overload
   @impl true
   def new(opts) do
     initial_configuration = %{
@@ -87,9 +89,11 @@ defmodule Aperture.LoadLimit.Gradient do
     # TODO: read up more on the gradient part of the algorithm
     value_deviation_tolerance = 1.5
 
-    # Basically draw a line between the two points, then walk a certain amount
+    # Basically: draw a line between the two points, then walk a certain amount
     # along that line towards the new value based on the `recency_bias_factor`
     # TODO: If the max gradient is 1, then I think the concurrency can never grow... right?
+    # So maybe there should be a "corrective magnitude factor" of some kind, instead of trying
+    # to add some static queueing onto the new estimated limit
     gradient =
       max(0.5, min(1.0, value_deviation_tolerance * new_smoothed_value / sample_value))
 
