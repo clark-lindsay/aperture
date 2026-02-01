@@ -6,12 +6,6 @@ defmodule Aperture.LoadLimit.GradientTest do
   alias Aperture.Window
 
   # TODO: It feels odd that we don't account for whether or not any requests were dropped...?
-  # TODO: Doesn't seem to be very sensitive at all to input, WRT changing the
-  # concurrency limit, even though the smoothed values appear to track neatly
-  # Seems more sensitive the larger the range of variation in input samples
-  # Maybe an error in my implementation of the algorithm.
-  # I think I'm not appropriately accounting for the long term average value,
-  # which would explain why it seems to be having this "frog soup" slow boil problem
   describe "add/2" do
     property "continually rising samples (averaged over a window) should produce a monotonic decreasing concurrency limit" do
       check all(
@@ -52,8 +46,6 @@ defmodule Aperture.LoadLimit.GradientTest do
       end
     end
 
-    # TODO: Concurrency never seems to grow...
-    # is that right? does the algorithm only account for contractions?
     property "continually falling samples (averaged over a window) should produce a monotonic increasing concurrency limit" do
       check all(
               initial_concurrency_limit <- constant(5),
