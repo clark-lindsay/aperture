@@ -6,7 +6,10 @@ defmodule Aperture.Application do
   """
   use Application
 
+  @impl Application
   def start(_, _) do
+    # TODO: Does the name here need to be _globally_ unique, and should therefore
+    # take in or use an "instance name" and/or allow for `:via` tuples?
     children = [
       {DynamicSupervisor, name: Aperture.Irises, strategy: :one_for_one}
     ]

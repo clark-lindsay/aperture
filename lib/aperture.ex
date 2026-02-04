@@ -11,7 +11,7 @@ defmodule Aperture do
       {Aperture.Iris,
        %{
          name: name,
-         load_limiter: load_limit_type.new(load_limit_config)
+         load_limit_config: load_limit_type.new(load_limit_config)
        }}
     )
   end

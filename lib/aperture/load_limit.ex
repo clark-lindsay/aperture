@@ -3,6 +3,7 @@ defmodule Aperture.LoadLimit do
   Provides a behaviour for defining limit algorithms
   """
 
+  # TODO: I think that this makes more sense as a protocol, not as a behaviour
   @doc """
   Creates a new `Aperture.LoadLimit` configuration, whose properties are specific to the algorithm.
   """
